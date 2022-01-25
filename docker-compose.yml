@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  pdf_stamp:
+    restart: always
+    image: pdf_stamp
+    build:
+      context: .
+    ports:
+      - 5011:5000
+    command: "gunicorn -b 0.0.0.0:5000 -t 120 'manager:app'"

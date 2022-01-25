@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    {% for page in pages %}
+        {% for image in pages[page] %}
+            <img style="
+                position:absolute;
+                left:{{image['pos'][0] * scale_x}}px;
+                top:{{image['pos'][1] * scale_y}}px;
+                width:{{image['dimension'][0] * scale_x}}px;"
+
+                src="{{uniq_folder_path}}/{{image['name']}}" />
+        {% endfor %}
+        {% if not loop.last %}
+            <div style="page-break-before: always;"/>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
